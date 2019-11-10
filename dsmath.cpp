@@ -4,10 +4,10 @@
 	Objective: Build shortest path tree for a given graph from specified vertex using Floyd–Warshall algorithm.
 */
 
-#ifdef _WIN32
+#ifdef _WIN32	
 
-#define _WIN32_WINNT 0x0500
-#include <Windows.h>
+#define _WIN32_WINNT 0x0500	
+#include <Windows.h>	
 
 #endif
 
@@ -169,6 +169,7 @@ int main(int argc, char *argv[])
 	*/
 
 
+
 	std::string in_file, out_file;
 
 	std::cout << "Input file: ";
@@ -184,7 +185,10 @@ int main(int argc, char *argv[])
 	int n;
 	input >> n;
 
-#ifdef _WIN32
+#ifdef _WIN32	
+
+	UINT PrevCP = GetConsoleOutputCP();
+	SetConsoleOutputCP(437);
 
 	HWND Console = GetConsoleWindow();
 	RECT WindowRect;
@@ -243,6 +247,12 @@ int main(int argc, char *argv[])
 
 	BuildTree(start, tree, g, s);
 	VisualizeTree(start, tree);
+
+#ifdef _WIN32
+
+	SetConsoleOutputCP(PrevCP);
+
+#endif
 
 	return 0;
 }
